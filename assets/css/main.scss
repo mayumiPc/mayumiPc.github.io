@@ -48,10 +48,15 @@ a {
   margin: 0 auto;
   padding: 1.25rem 1.5rem;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.site-branding {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
 .site-title {
@@ -60,15 +65,13 @@ a {
   font-weight: 700;
   letter-spacing: 0.02em;
   line-height: 1.3;
+}
 
-  a {
-    color: inherit;
-    text-decoration: none;
-
-    &:hover {
-      color: $accent;
-    }
-  }
+.site-description {
+  margin: 0;
+  color: $muted;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .site-nav {
@@ -101,6 +104,26 @@ a {
   max-width: 42rem;
   margin: 0 auto;
   padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-links__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.footer-links__list li {
+  margin: 0;
+}
+
+.site-footer__copyright {
+  display: block;
 }
 
 /* 記事本文 */
@@ -185,6 +208,17 @@ a {
   font-weight: 600;
 }
 
+.site-main .post-list__heading {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.post-list__preview {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  color: $muted;
+}
+
 .post-list__meta {
   display: block;
   font-size: 0.8125rem;
@@ -219,6 +253,32 @@ a {
     padding-bottom: 0.35rem;
     border-bottom: 1px solid $border;
   }
+}
+
+.related-posts {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid $border;
+}
+
+.related-posts h2 {
+  margin: 0 0 0.6rem;
+  font-size: 1.1rem;
+}
+
+.related-posts__list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.site-main .related-posts__heading {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.related-posts__empty {
+  margin: 0;
+  color: $muted;
 }
 
 @media (min-width: 48rem) {

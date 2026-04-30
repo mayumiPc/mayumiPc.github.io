@@ -10,7 +10,10 @@
 <body>
   <header class="site-header">
     <div class="site-header__inner">
-      <p class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></p>
+      <div class="site-branding">
+        <p class="site-title">{{ site.title }}</p>
+        <p class="site-description">{{ site.description }}</p>
+      </div>
       <nav class="site-nav" aria-label="主要ナビゲーション">
         <a href="{{ '/' | relative_url }}">ホーム</a>
       </nav>
@@ -28,6 +31,26 @@
         {{ content }}
       </div>
     </article>
+    <section class="related-posts" aria-label="関連記事">
+      <h2>関連記事</h2>
+      {% assign related_posts = site.related_posts | where_exp: "post", "post.url != page.url" | limit: 3 %}
+      {% if related_posts == empty %}
+        {% assign related_posts = site.posts | where_exp: "post", "post.url != page.url" | limit: 3 %}
+      {% endif %}
+      {% if related_posts != empty %}
+      <ul class="related-posts__list">
+        {% for post in related_posts %}
+        <li>
+          <h3 class="related-posts__heading">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h3>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="related-posts__empty">関連記事はまだありません。</p>
+      {% endif %}
+    </section>
     {% else %}
     {{ content }}
     {% endif %}
@@ -35,7 +58,18 @@
 
   <footer class="site-footer">
     <div class="site-footer__inner">
-      <span>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</span>
+      <ul class="footer-links__list" aria-label="リンク">
+        <li>
+          <a href="mailto:mpc-developer@outlook.jp">E-mail</a>
+        </li>
+        <li>
+          <a href="https://x.com/NeoPhoenixPC/followers">twitter</a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@NeoPhoenixPC">youtube</a>
+        </li>
+      </ul>
+      <span class="site-footer__copyright">&copy; {{ site.time | date: '%Y' }} {{ site.title }}</span>
     </div>
   </footer>
 </body>
