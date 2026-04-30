@@ -1,3 +1,37 @@
 title: mayumiPc の技術ブログ
 description: 俺が日々気づいたことを記録を自由気ままに綴る場所
 lang: ja
+
+# GitHub Pages（ユーザーサイト）向け。リポジトリ名が username.github.io のとき baseurl は空
+url: https://mayumipc.github.io
+baseurl: ""
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: default
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor

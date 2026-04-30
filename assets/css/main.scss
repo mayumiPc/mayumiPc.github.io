@@ -1,0 +1,232 @@
+---
+---
+
+$bg: #faf9f7;
+$text: #1a1a1a;
+$muted: #5c5c5c;
+$accent: #2563eb;
+$border: #e8e6e3;
+$code-bg: #f0eeeb;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
+  line-height: 1.7;
+  color: $text;
+  background: $bg;
+}
+
+a {
+  color: $accent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+
+  &:hover {
+    text-decoration-thickness: 2px;
+  }
+}
+
+.site-header {
+  border-bottom: 1px solid $border;
+  background: #fff;
+}
+
+.site-header__inner {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+}
+
+.site-nav {
+  font-size: 0.9375rem;
+
+  a {
+    color: $muted;
+    text-decoration: none;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+}
+
+.site-main {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.site-footer {
+  border-top: 1px solid $border;
+  background: #fff;
+  color: $muted;
+  font-size: 0.875rem;
+}
+
+.site-footer__inner {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+}
+
+/* 記事本文 */
+.site-main h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0 0 1rem;
+  letter-spacing: 0.02em;
+}
+
+.site-main h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 2rem 0 0.75rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid $border;
+}
+
+.site-main h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.site-main p {
+  margin: 0 0 1rem;
+}
+
+.site-main ul,
+.site-main ol {
+  margin: 0 0 1rem;
+  padding-left: 1.35rem;
+}
+
+.site-main li {
+  margin: 0.25rem 0;
+}
+
+.site-main pre,
+.site-main code {
+  font-family: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+  font-size: 0.9em;
+}
+
+.site-main code {
+  background: $code-bg;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+
+.site-main pre {
+  background: $code-bg;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  border: 1px solid $border;
+
+  code {
+    background: none;
+    padding: 0;
+  }
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+.post-list li {
+  margin: 0;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid $border;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.post-list__title {
+  font-weight: 600;
+}
+
+.post-list__meta {
+  display: block;
+  font-size: 0.8125rem;
+  color: $muted;
+  margin-top: 0.2rem;
+}
+
+.post-header {
+  margin-bottom: 1.5rem;
+}
+
+.post-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0 0 0.35rem;
+  letter-spacing: 0.02em;
+}
+
+.post-meta {
+  margin: 0;
+  font-size: 0.875rem;
+  color: $muted;
+}
+
+.post-body {
+  /* 記事内見出しは h2 から */
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 2rem 0 0.75rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid $border;
+  }
+}
+
+@media (min-width: 48rem) {
+  .site-main h1 {
+    font-size: 2rem;
+  }
+
+  .post-title {
+    font-size: 2rem;
+  }
+}
