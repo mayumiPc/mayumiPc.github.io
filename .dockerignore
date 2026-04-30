@@ -1,0 +1,11 @@
+.git
+.gitignore
+.cursor
+.vscode
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+node_modules
+*.log

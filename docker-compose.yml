@@ -1,0 +1,17 @@
+services:
+  jekyll:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mayumipc-jekyll
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/site
+    environment:
+      JEKYLL_ENV: development
+      BUNDLE_PATH: /usr/local/bundle
+      LANG: C.UTF-8
+      LC_ALL: C.UTF-8
+    stdin_open: true
+    tty: true
