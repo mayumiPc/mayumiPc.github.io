@@ -1,13 +1,14 @@
 (function () {
-  var root = document.querySelector(".footer-email[data-email-b64]");
+  var root = document.querySelector(".footer-email");
   if (!root) return;
 
-  var b64 = root.getAttribute("data-email-b64");
+  var k = [41, 126, 20, 179];
+  var p1 = [68, 14, 119, 158, 77, 27, 98, 214, 69, 17, 100, 214, 91];
+  var p2 = [62, 123, 198, 93, 18, 123, 220, 66, 80, 126, 195];
+  var buf = p1.concat(p2);
   var email = "";
-  try {
-    email = window.atob(b64);
-  } catch (e) {
-    return;
+  for (var i = 0; i < buf.length; i++) {
+    email += String.fromCharCode(buf[i] ^ k[i % 4]);
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
