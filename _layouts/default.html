@@ -15,7 +15,17 @@
         <p class="site-description">{{ site.description }}</p>
       </div>
       <nav class="site-nav" aria-label="主要ナビゲーション">
-        <a href="{{ '/' | relative_url }}">ホーム</a>
+        <ul class="site-nav__list">
+          <li>
+            <a href="{{ '/' | relative_url }}">ホーム</a>
+          </li>
+          <li>
+            <a href="{{ '/categories/' | relative_url }}">カテゴリ</a>
+          </li>
+          <li>
+            <a href="{{ '/tags/' | relative_url }}">タグ</a>
+          </li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -25,7 +35,21 @@
     <article class="post">
       <header class="post-header">
         <h1 class="post-title">{{ page.title }}</h1>
-        <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y年%-m月%-d日" }}</time></p>
+        <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time></p>
+        {% if page.categories and page.categories != empty %}
+        <ul class="post-taxonomy-list post-taxonomy-list--categories" aria-label="カテゴリ">
+          {% for category in page.categories %}
+          <li><span class="taxonomy-pill taxonomy-pill--category">{{ category }}</span></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% if page.tags and page.tags != empty %}
+        <ul class="post-taxonomy-list post-taxonomy-list--tags" aria-label="タグ">
+          {% for tag in page.tags %}
+          <li><span class="taxonomy-pill taxonomy-pill--tag">#{{ tag }}</span></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
       </header>
       <div class="post-body">
         {{ content }}

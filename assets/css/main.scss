@@ -1,12 +1,14 @@
 ---
 ---
 
-$bg: #faf9f7;
+$bg: #fcfcfb;
 $text: #1a1a1a;
 $muted: #5c5c5c;
 $accent: #2563eb;
+$accent-soft: #dbe8ff;
 $border: #e8e6e3;
 $code-bg: #f0eeeb;
+$surface: #ffffff;
 
 *,
 *::before,
@@ -25,13 +27,14 @@ body {
     "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif;
   line-height: 1.7;
   color: $text;
-  background: $bg;
+  background: linear-gradient(180deg, #ffffff 0%, $bg 55%, #fbfbfa 100%);
 }
 
 a {
   color: $accent;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
+  transition: color 0.18s ease;
 
   &:hover {
     text-decoration-thickness: 2px;
@@ -39,8 +42,21 @@ a {
 }
 
 .site-header {
-  border-bottom: 1px solid $border;
-  background: #fff;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  background: #f8fafc;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(26, 26, 26, 0.03);
+  position: relative;
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0) 0%, rgba(37, 99, 235, 0.2) 50%, rgba(37, 99, 235, 0) 100%);
 }
 
 .site-header__inner {
@@ -61,10 +77,23 @@ a {
 
 .site-title {
   margin: 0;
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   line-height: 1.3;
+  position: relative;
+  padding-left: 0.7rem;
+}
+
+.site-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.18em;
+  width: 3px;
+  height: 1.1em;
+  border-radius: 999px;
+  background: linear-gradient(180deg, $accent 0%, #4f89f0 100%);
 }
 
 .site-description {
@@ -76,26 +105,48 @@ a {
 
 .site-nav {
   font-size: 0.9375rem;
+}
 
-  a {
-    color: $muted;
-    text-decoration: none;
+.site-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
 
-    &:hover {
-      color: $accent;
-    }
+.site-nav__list li {
+  margin: 0;
+}
+
+.site-nav a {
+  color: $text;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+
+  &:hover {
+    color: $accent;
+    background: $accent-soft;
+    border-color: rgba(37, 99, 235, 0.22);
   }
 }
 
 .site-main {
   max-width: 42rem;
   margin: 0 auto;
-  padding: 2rem 1.5rem 3rem;
+  padding: 2.35rem 1.5rem 3rem;
 }
 
 .site-footer {
-  border-top: 1px solid $border;
-  background: #fff;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+  background: rgba(255, 255, 255, 0.96);
   color: $muted;
   font-size: 0.875rem;
 }
@@ -103,7 +154,7 @@ a {
 .site-footer__inner {
   max-width: 42rem;
   margin: 0 auto;
-  padding: 1.25rem 1.5rem;
+  padding: 1.4rem 1.5rem 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -173,8 +224,9 @@ a {
   font-size: 1.25rem;
   font-weight: 700;
   margin: 2rem 0 0.75rem;
-  padding-bottom: 0.35rem;
+  padding: 0 0 0.35rem 0.55rem;
   border-bottom: 1px solid $border;
+  border-left: 3px solid rgba(37, 99, 235, 0.45);
 }
 
 .site-main h3 {
@@ -225,21 +277,36 @@ a {
 .post-list {
   list-style: none;
   padding: 0;
-  margin: 0.5rem 0 0;
+  margin: 0.75rem 0 0;
+  display: grid;
+  gap: 0.9rem;
 }
 
 .post-list li {
   margin: 0;
-  padding: 0.65rem 0;
-  border-bottom: 1px solid $border;
+  padding: 1.5rem 1.5rem 1.35rem;
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(26, 26, 26, 0.05);
+  border-left: 4px solid transparent;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 
-  &:last-child {
-    border-bottom: none;
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(37, 99, 235, 0.3);
+    border-left-color: $accent;
+    box-shadow: 0 10px 22px rgba(26, 26, 26, 0.11);
   }
 }
 
 .post-list__title {
   font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .site-main .post-list__heading {
@@ -248,16 +315,17 @@ a {
 }
 
 .post-list__preview {
-  margin: 0.35rem 0 0;
+  margin: 0.45rem 0 0;
   font-size: 0.9rem;
   color: $muted;
+  line-height: 1.75;
 }
 
 .post-list__meta {
   display: block;
-  font-size: 0.8125rem;
-  color: $muted;
-  margin-top: 0.2rem;
+  font-size: 0.76rem;
+  color: rgba(92, 92, 92, 0.78);
+  margin-top: 0.55rem;
 }
 
 .post-header {
@@ -278,6 +346,42 @@ a {
   color: $muted;
 }
 
+.post-taxonomy-list,
+.post-list__taxonomy {
+  list-style: none;
+  margin: 0.55rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.post-taxonomy-list li,
+.post-list__taxonomy li {
+  margin: 0;
+}
+
+.taxonomy-pill {
+  display: inline-block;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 0.16rem 0.6rem;
+  font-size: 0.76rem;
+  line-height: 1.5;
+  color: $text;
+}
+
+.taxonomy-pill--category {
+  background: #eef4ff;
+  border-color: rgba(37, 99, 235, 0.22);
+}
+
+.taxonomy-pill--tag {
+  background: #f3f4f6;
+  border-color: rgba(26, 26, 26, 0.1);
+  color: #3f3f46;
+}
+
 .post-body {
   /* 記事内見出しは h2 から */
   h2 {
@@ -291,8 +395,10 @@ a {
 
 .related-posts {
   margin-top: 2rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid $border;
+  padding: 1.1rem 1rem 0.9rem;
+  border: 1px solid $border;
+  border-radius: 12px;
+  background: $surface;
 }
 
 .related-posts h2 {
@@ -315,7 +421,56 @@ a {
   color: $muted;
 }
 
+.archive-group-list {
+  list-style: none;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.95rem;
+}
+
+.archive-group-list__item {
+  margin: 0;
+  padding: 1rem 1rem 0.9rem;
+  border: 1px solid $border;
+  border-radius: 12px;
+  background: $surface;
+}
+
+.site-main .archive-group-list__heading {
+  margin: 0 0 0.55rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 1rem;
+}
+
+.archive-group-list__count {
+  font-size: 0.8rem;
+  color: $muted;
+}
+
+.archive-post-list {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.archive-post-list li {
+  margin: 0.3rem 0;
+}
+
+.archive-post-list__meta {
+  margin-left: 0.5rem;
+  font-size: 0.78rem;
+  color: $muted;
+}
+
 @media (min-width: 48rem) {
+  .site-header__inner {
+    padding-top: 1.4rem;
+    padding-bottom: 1.2rem;
+  }
+
   .site-main h1 {
     font-size: 2rem;
   }
