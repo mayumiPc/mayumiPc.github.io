@@ -60,7 +60,12 @@
     <div class="site-footer__inner">
       <ul class="footer-links__list" aria-label="リンク">
         <li>
-          <a href="mailto:mpc-developer@outlook.jp">E-mail</a>
+          <span class="footer-email" data-email-b64="bXBjLWRldmVsb3BlckBvdXRsb29rLmpw">
+            <button type="button" class="footer-email__copy" aria-label="メールアドレスをクリップボードにコピー">
+              E-mail
+            </button>
+            <span class="footer-email__feedback" role="status" aria-live="polite" hidden></span>
+          </span>
         </li>
         <li>
           <a href="https://x.com/NeoPhoenixPC/followers">twitter</a>
@@ -72,5 +77,6 @@
       <span class="site-footer__copyright">&copy; {{ site.time | date: '%Y' }} {{ site.title }}</span>
     </div>
   </footer>
+  <script src="{{ '/assets/js/email-contact.js' | relative_url }}" defer></script>
 </body>
 </html>

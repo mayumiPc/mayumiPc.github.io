@@ -122,6 +122,40 @@ a {
   margin: 0;
 }
 
+.footer-email {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.footer-email__copy {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: $accent;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+
+  &:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $accent;
+    outline-offset: 2px;
+  }
+}
+
+.footer-email__feedback {
+  font-size: 0.8125rem;
+  color: $muted;
+}
+
 .site-footer__copyright {
   display: block;
 }
