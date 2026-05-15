@@ -23,10 +23,8 @@ RUN sed -i 's/\r$//' /usr/local/bin/docker-entrypoint.sh \
 # ビルド時にサイト一式が妥当か確認するためコピー（実行時は compose のボリュームで上書き）
 COPY . .
 
-# Docker Desktop（Windows）のボリュームマウントでは Jekyll 3.9 の watch が
-# /proc/version 読み取りで例外になることがあるため、既定では監視をオフにする。
-# ファイル変更後はコンテナを再起動するか: docker compose restart
+# ファイル監視は compose の LISTEN_GEM_USE_POLLING でポーリング（Windows ボリューム向け）
 EXPOSE 4000
 
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["serve", "--host", "0.0.0.0", "--port", "4000", "--no-watch"]
+CMD ["serve", "--host", "0.0.0.0", "--port", "4000"]

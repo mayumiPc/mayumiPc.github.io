@@ -1,8 +1,8 @@
 title: mayumiPc の技術ブログ
 description: 俺が日々気づいたことを自由気ままに綴る場所
 lang: ja
-# 投稿日の解釈・「未来記事」判定に使う。未指定だと UTC 寄りになり、日本時間ではまだ「今日」でも投稿が一覧から消えることがある
-timezone: Asia/Tokyo
+# 投稿日が「今日」でも一覧に出す（UTC 判定で未来扱いになるのを防ぐ）
+future: true
 
 # GitHub Pages（ユーザーサイト）向け。リポジトリ名が username.github.io のとき baseurl は空
 url: https://mayumipc.github.io

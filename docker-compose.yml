@@ -13,5 +13,7 @@ services:
       BUNDLE_PATH: /usr/local/bundle
       LANG: C.UTF-8
       LC_ALL: C.UTF-8
+      # Windows のボリュームマウントでは inotify が効かないためポーリングで watch する
+      LISTEN_GEM_USE_POLLING: "1"
     stdin_open: true
     tty: true
