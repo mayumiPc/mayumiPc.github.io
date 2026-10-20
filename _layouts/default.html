@@ -82,25 +82,15 @@
 
   <footer class="site-footer">
     <div class="site-footer__inner">
-      <ul class="footer-links__list" aria-label="リンク">
-        <li>
-          <span class="footer-email">
-            <button type="button" class="footer-email__copy" aria-label="メールアドレスをクリップボードにコピー">
-              E-mail
-            </button>
-            <span class="footer-email__feedback" role="status" aria-live="polite" hidden></span>
-          </span>
-        </li>
-        <li>
-          <a href="https://x.com/NeoPhoenixPC/followers">twitter</a>
-        </li>
-        <li>
-          <a href="https://www.youtube.com/@NeoPhoenixPC">youtube</a>
-        </li>
-      </ul>
-      <span class="site-footer__copyright">&copy; {{ site.time | date: '%Y' }} {{ site.title }}</span>
+      <div class="site-footer__about">
+        <p class="site-footer__name">{{ site.title }}</p>
+        <p class="site-footer__note">{{ site.mnexus.name }} が運営するブログサイトです。</p>
+      </div>
+      <nav class="footer-links" aria-label="運営元サイト">
+        <a class="footer-links__main" href="{{ site.mnexus.url }}">{{ site.mnexus.name }} 公式サイト<span class="footer-links__arrow" aria-hidden="true">→</span></a>
+      </nav>
+      <p class="site-footer__copyright">&copy; {{ site.time | date: '%Y' }} {{ site.mnexus.name }}. All rights reserved.</p>
     </div>
   </footer>
-  <script src="{{ '/assets/js/email-contact.js' | relative_url }}" defer></script>
 </body>
 </html>

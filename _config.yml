@@ -4,9 +4,14 @@ lang: ja
 # 投稿日が「今日」でも一覧に出す（UTC 判定で未来扱いになるのを防ぐ）
 future: true
 
-# GitHub Pages（ユーザーサイト）向け。リポジトリ名が username.github.io のとき baseurl は空
-url: https://mayumipc.github.io
+# 独自ドメイン（CNAME: blog.mnexus.jp）で公開。サブディレクトリではないので baseurl は空
+url: https://blog.mnexus.jp
 baseurl: ""
+
+# 運営元（フッターのリンク・コピーライト表記に使用）
+mnexus:
+  name: MNexus
+  url: https://mnexus.jp/
 
 markdown: kramdown
 kramdown:

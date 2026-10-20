@@ -154,46 +154,45 @@ a {
 .site-footer__inner {
   max-width: 42rem;
   margin: 0 auto;
-  padding: 1.4rem 1.5rem 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  padding: 1.6rem 1.5rem 1.4rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
 
-.footer-links__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 0.9rem;
-  flex-wrap: wrap;
-}
-
-.footer-links__list li {
+.site-footer__about p {
   margin: 0;
 }
 
-.footer-email {
+.site-footer__name {
+  color: $text;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.site-footer__note {
+  margin-top: 0.15rem;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.footer-links__main {
   display: inline-flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.footer-email__copy {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font: inherit;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.95rem;
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  border-radius: 999px;
+  background: $accent-soft;
   color: $accent;
-  cursor: pointer;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
 
   &:hover {
-    text-decoration-thickness: 2px;
+    background: $accent;
+    border-color: $accent;
+    color: #fff;
   }
 
   &:focus-visible {
@@ -202,13 +201,20 @@ a {
   }
 }
 
-.footer-email__feedback {
-  font-size: 0.8125rem;
-  color: $muted;
+.footer-links__arrow {
+  transition: transform 0.18s ease;
+}
+
+.footer-links__main:hover .footer-links__arrow {
+  transform: translateX(2px);
 }
 
 .site-footer__copyright {
-  display: block;
+  margin: 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid $border;
+  font-size: 0.78rem;
+  color: rgba(92, 92, 92, 0.85);
 }
 
 /* 記事本文 */
@@ -498,5 +504,15 @@ a {
 
   .post-title {
     font-size: 2rem;
+  }
+
+  .site-footer__inner {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: 1.5rem;
+  }
+
+  .site-footer__copyright {
+    grid-column: 1 / -1;
   }
 }
